@@ -1,35 +1,115 @@
-# FastAPI Authentication Prototype Prompt
+You are a Senior Staff Software Engineer working at a top-tier tech company.
 
-You are a junior backend developer who writes quick prototype code without following best practices.
+Your task is to refactor a messy, insecure, single-file FastAPI authentication codebase into a production-ready, scalable backend system.
 
-Generate a FastAPI authentication system (login + signup + profile) in Python.
+---
 
-IMPORTANT REQUIREMENTS:
-- The code MUST be intentionally messy and NOT production-ready
-- DO NOT use environment variables at all
-- HARD-CODE all secrets directly in the code (JWT secret, passwords, etc.)
-- Do NOT use proper project structure (everything in one file)
-- Avoid separation of concerns (no services, no layers)
-- Minimal or no comments
-- No proper error handling patterns
-- Inconsistent naming conventions (mix camelCase and snake_case randomly)
-- No validation beyond basic Pydantic usage
-- Store users in a simple in-memory dictionary (no database)
-- Do NOT follow security best practices
-- Use plain JWT authentication but implemented in a rough way
-- Ignore token expiry edge cases or handle them poorly
-- Use outdated or inconsistent coding style where possible
+# 🔥 GOAL
+Transform the given code into a clean, modular, production-grade authentication system with proper architecture, security, and documentation.
 
-Endpoints required:
-- /signup (register user)
-- /login (authenticate user and return token)
-- /profile (decode token and return user info)
+---
 
-Also:
-- Put everything in a SINGLE Python file
-- Use FastAPI, PyJWT, passlib (bcrypt)
-- Hardcode secret key like: "mysecret123"
-- Make mistakes in structure and readability intentionally
-- Do NOT optimize or refactor anything
+# 📦 REQUIRED OUTPUT STRUCTURE
 
-Output only the Python code.
+You MUST split the code into a proper project structure like:
+
+app/
+│── main.py
+│── core/
+│   ├── config.py
+│   ├── security.py
+│── models/
+│   ├── user.py
+│── schemas/
+│   ├── auth.py
+│── routes/
+│   ├── auth.py
+│   ├── user.py
+│── services/
+│   ├── auth_service.py
+│── db/
+│   ├── fake_db.py (or repository abstraction)
+│── utils/
+│   ├── logger.py
+
+---
+
+# 🧠 FUNCTIONAL REQUIREMENTS
+
+Implement:
+- User Signup
+- User Login
+- JWT Authentication
+- Protected Profile Route
+
+---
+
+# 🔐 SECURITY REQUIREMENTS
+
+- REMOVE all hardcoded secrets
+- Use environment variable style config (e.g. os.getenv fallback values)
+- Proper JWT handling with expiration
+- Password hashing using bcrypt
+- Never store plain text passwords
+- Add token verification dependency
+- Handle auth errors properly
+
+---
+
+# 🧼 CODE QUALITY REQUIREMENTS
+
+- Full type hints everywhere
+- Follow PEP8 strictly
+- Clean architecture principles (separation of concerns)
+- No logic inside routes (use services layer)
+- Reusable functions and dependencies
+- Proper exception handling
+- Add logging utility
+- Use dependency injection (FastAPI Depends)
+
+---
+
+# 🧪 VALIDATION REQUIREMENTS
+
+- Validate request payloads using Pydantic schemas
+- Separate request/response models properly
+- Add meaningful error messages
+
+---
+
+# 📄 DOCUMENTATION REQUIREMENTS
+
+Generate a MARKDOWN documentation file that includes:
+
+1. Project Overview
+2. Architecture Explanation
+3. Folder Structure Explanation
+4. API Endpoints:
+   - POST /signup
+   - POST /login
+   - GET /profile
+5. Authentication Flow Explanation
+6. Security Considerations
+7. How to Run the Project
+8. Example Requests (curl or JSON format)
+
+---
+
+# 🧠 ENGINEERING STYLE
+
+Act like this is a real production system used by millions of users.
+
+Think about:
+- scalability
+- maintainability
+- security
+- clean architecture
+- future extensibility
+
+---
+
+# 📥 INPUT CODE
+Here is the messy FastAPI authentication code to refactor:
+
+```python
+# paste messy code here
